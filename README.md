@@ -16,6 +16,6 @@ Good2Go (G2G) containers are used all throughout dining halls for individuals wa
 
 Our solution involves a token/food container swapping machine that serves 2 main functions:
 
-Have a G2G token, that upon deposit, returns a clean container
-Accept a used container, returning a G2G token or a clean container
+Have a G2G token, that upon deposit, returns a clean container.
+Accept a used container, returning a G2G token or a clean container.
 The goal here is to make the process semi-autonomous by removing 2 stages of interaction, as well as speeding up the entire process by doing so.
