@@ -79,7 +79,7 @@
 <img src = "https://media.discordapp.net/attachments/903401697957789716/971320907064811520/pcb.jpg?width=334&height=676"> 
 </p>
 <p align = "center">
-<strong> Voltage Regulator (top) Connected to PCB (bottom) </strong>
+<strong> Voltage Regulator Connected to PCB </strong>
 </p>
 
 
