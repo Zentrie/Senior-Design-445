@@ -39,7 +39,7 @@
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971307463741698079/Machine_Shop_Contraption_G2G.png">
 </p>
 <p align = "center">
-<strong> Physical Design for our Contraption </strong>
+<strong> Physical Design Used for our Machine Shop Contraption </strong>
 </p>
 
 # 2022-03-11 -- Machine Shop & Parts
@@ -76,10 +76,8 @@
 - There were issues with power delivery as it was exceeding the intended 5V delivery, so we used a separate external blank PCB board with MOSFETs and capacitors to properly regulate voltage from the DC power supply. 
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971313502084018286/IMG_5931.jpg">
+<img src = "https://media.discordapp.net/attachments/903401697957789716/971320907064811520/pcb.jpg?width=334&height=676"> 
 </p>
-<p align="center">
-<img src = "https://cdn.discordapp.com/attachments/903401697957789716/971313785539272704/IMG_5932.jpg"> 
-</p> 
 <p align = "center">
 <strong> Voltage Regulator (top) Connected to PCB (bottom) </strong>
 </p>
