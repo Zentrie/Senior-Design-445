@@ -21,13 +21,18 @@
 
 
 ## Summary
-This is a notebook outlining the work and progress I made from the start of project.
+This is a notebook outlining the work and progress I made from the start of the project.
 
 ## Week of 2022-01-24
-* 01/25: Team formation, RFA
+* **01/25 (Getting Started on the RFA)**:
+  * <ins>Objectives</ins>: Get to know the team and familiarize with the problem statement that the team is trying to solve
+  * <ins>Overview</ins>: Our team was trying to automate a currently existent service used at the U of I dining halls. However, I was not too familiar with the current system and thus had to search online for how exactly the Good2Go system was managed and what problems there were. I realized that the current system required students to first receive a physical token and find a dining hall employee to exchange it for a new take-out container. After identifying the problems, I started working on the RFA (request for approval) to get started on our project.
+
 
 ## Week of 2022-02-01
-* 02/01: Project porposal
+* **02/01 (RFA Submission and Starting on Proposal)**:
+  * <ins>Objectives</ins>: Get the RFA approved and start working on the proposal
+  * <ins>Overview</ins>: The initial RFA post got rejected mainly because our team was not specific about the subsystem requirements. My team and I had a discussion with a TA named Dean Biskup to identify what we were missing in the RFA. I had a general idea of what kind of modules we were going to need for the project such as a motor, ID verification method, UI interface, and power supply components, the specifics were missing out as to how to integrate the entire components. I started looking into the details of each subsystem and was able to design an abstract FSM (finite state machine) with specific modules such as the QR scanner, scale, two sets of motors, display and a card reader. 
 
 ## Week of 2022-02-07
 * 02/07: proposal complete
