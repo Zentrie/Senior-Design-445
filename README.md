@@ -2,7 +2,7 @@
 
 An autonomous food container dispenser machine. 
 
-![diagram](https://cdn.discordapp.com/attachments/862762318407139328/938229399084482560/IMG_1575.jpg)
+<img src="images/project.png" width="400" height="300">
 
 Team Members:
 
