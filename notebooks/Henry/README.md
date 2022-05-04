@@ -21,6 +21,9 @@
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971307479701000222/blockdia.drawio.png">
 </p>
+<p align = "center">
+<strong> Block Diagram </strong>
+</p>
 
 # 2022-02-28 -- Design Review 
 - Thought about how the Design Review will go, delegating parts to each teammate for what to talk about, as well as how to address the different kinds of questions we can expect. 
@@ -34,6 +37,9 @@
 - Measured dimensions of our intended container of use, sketching and designing our new machine shop design around the container's dimensions.
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971307463741698079/Machine_Shop_Contraption_G2G.png">
+</p>
+<p align = "center">
+<strong> Physical Design for our Contraption </strong>
 </p>
 
 # 2022-03-11 -- Machine Shop & Parts
@@ -74,6 +80,10 @@
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971313785539272704/IMG_5932.jpg"> 
 </p> 
+<p align = "center">
+<strong> Voltage Regulator (top) Connected to PCB (bottom) </strong>
+</p>
+
 
 # 2022-04-15 -- Received New Continuous Servo Motor & QR Scanner Testing
 - Met with John to test new continuous servo motor in conjunction with the load cell, non-continuous servo motor, and push buttons. 
