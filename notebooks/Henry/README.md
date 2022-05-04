@@ -21,6 +21,7 @@
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971307479701000222/blockdia.drawio.png">
 </p>
+
 # 2022-02-28 -- Design Review 
 - Thought about how the Design Review will go, delegating parts to each teammate for what to talk about, as well as how to address the different kinds of questions we can expect. 
 # 2022-03-01 -- PCB Design & Reviews
@@ -34,6 +35,7 @@
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971307463741698079/Machine_Shop_Contraption_G2G.png">
 </p>
+
 # 2022-03-11 -- Machine Shop & Parts
 - Met with Gregg Bennett and Skee Aldrich to discuss our revised physical design and get it built. 
 - Bought parts from the ECE Supply Center, specifically two servo motors (one continuous, one non-continuous), a demultiplexer, an ATMega328P, and LED diodes.  
@@ -72,6 +74,7 @@
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971313785539272704/IMG_5932.jpg"> 
 </p> 
+
 # 2022-04-15 -- Received New Continuous Servo Motor & QR Scanner Testing
 - Met with John to test new continuous servo motor in conjunction with the load cell, non-continuous servo motor, and push buttons. 
 - Tested out QR scanner. We had a lot of issues with the QR code being not read in as a valid code and figured out that we needed to use a static QR code, rather than a dynamic one. 
@@ -86,6 +89,7 @@
 <p align = "center">
 <strong> RETRIEVAL (left) AND DISPENSAL (right) </strong>
 </p>
+
 # 2022-04-17 -- PCB Debugging 
 - Attempted to integrate PCB with our software, but our PCB was not working. 
 - Probed all the components on our board, and found there was a huge voltage drop across components that were on the right side of the board. 
