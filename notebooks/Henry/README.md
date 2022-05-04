@@ -76,10 +76,12 @@
 - There were issues with power delivery as it was exceeding the intended 5V delivery, so we used a separate external blank PCB board with MOSFETs and capacitors to properly regulate voltage from the DC power supply. 
 <p align="center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971313502084018286/IMG_5931.jpg">
+</p>
+<p align="center">
 <img src = "https://media.discordapp.net/attachments/903401697957789716/971320907064811520/pcb.jpg?width=334&height=676"> 
 </p>
 <p align = "center">
-<strong> Voltage Regulator Connected to PCB </strong>
+<strong> Voltage Regulator (top) Connected to PCB (bottom) </strong>
 </p>
 
 
