@@ -84,7 +84,7 @@
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971312807532458034/dispense.gif">
 </p>
 <p align = "center">
-<strong> RETRIEVAL (left) AND DISPENSAL (right) 
+<strong> RETRIEVAL (left) AND DISPENSAL (right) </strong>
 </p>
 # 2022-04-17 -- PCB Debugging 
 - Attempted to integrate PCB with our software, but our PCB was not working. 
@@ -93,7 +93,6 @@
   - Cause of corrosion was due to using water-soluble flux when desoldering from our original PCB
 # 2022-04-22 -- Mock Demo
 - Conducted our Mock Demo with our TA (Akshat). Tidied up final apparatus and got ready for final demo. 
-
 
 
 
