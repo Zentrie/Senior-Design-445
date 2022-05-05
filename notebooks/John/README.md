@@ -178,7 +178,9 @@ This is a notebook outlining the work and progress I made from the start of the 
 ## Week of 2022-04-11
 * **04/11 (Software QR Complete)**:
   * <ins>Objectives</ins>: Complete software code and testing for QR scanner
-  * <ins>Overview</ins>: Even though I was able to get the QR code readings using the module, there were several issues that I had to fix. One was that the reading values kept changing even for the same QR code. I realized that there were two different types of QR codes, dynamic and statc. Dynamic QR codes had their encoded information change upon creation as it was a redirection to a URL whereas static QR codes had their information fixed. Since our project only required QR codes for validation of the G2G containers, I used static QR codes to read the data. Another issue was that if the returned container sat in the return place for too long, it would get multiple QR scans and fill up the serial communication buffer. Thus next time the machine was used, it gets tricked into thinking that it already has a valid QR scan. To solve this issue, I had to clear the buffer if and only if the container was invalid.
+  * <ins>Overview</ins>: Even though I was able to get the QR code readings using the module, there were several issues that I had to fix. One was that the reading values kept changing even for the same QR code. I realized that there were two different types of QR codes, dynamic and statc. Dynamic QR codes had their encoded information change upon creation as it was a redirection to a URL whereas static QR codes had their information fixed. Since our project only required QR codes for validation of the G2G containers, I used static QR codes to read the data. Another issue was that if the returned container sat in the return place for too long, it would get multiple QR scans and fill up the serial communication buffer. Thus next time the machine was used, it gets tricked into thinking that it already has a valid QR scan. To solve this issue, I had to clear the buffer if and only if the container was invalid. I also had to send several UART scan commands to the address of the QR to change some of the default behaviors that were incompatible with the intended design of our project. First change was to set the baud rate from 9600 to 115200 to be synchronized with the card reader, and next was changing the scan mode from sleep to continuous scanning mode. Last step was setting a manual timeout value of 10 seconds to allow users ample time to place and return an old container. After all these configurations, the below code shows what I had used to read in QR data.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/QR_code.png" width="500" height="400"> 
 
 * **04/12 (Software Card Reader Code)**:
   * <ins>Objectives</ins>: Software code for usb magnetic card swiper
@@ -188,7 +190,7 @@ This is a notebook outlining the work and progress I made from the start of the 
   * <ins>Objectives</ins>: Final debugging of the card reader
   * <ins>Overview</ins>: After multiple attempts, I went line by line within the Arduino library to find the point of failure, and identified it to be in the below code. When I declared a USB object within the software, it went through a list of initialization processes to find the device descriptor and storing the end-point address of the device. However it was unable to do so, and I realized that I either had to write a separate driver code (which was impossible with the time constraint I had) or find another HID device compatible with existent driver codes.
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/load_cell_resolution.png" width="500" height="300"> 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/usb_err.png" width="550" height="300"> 
 
 * **04/14 (Card Reader Alternative Solution)**:
   * <ins>Objectives</ins>: Design consideration for the card reader
@@ -201,12 +203,14 @@ This is a notebook outlining the work and progress I made from the start of the 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/HIDkb.png" width="600" height="300"> 
 
 * **04/16 (Software Card Reader Complete)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Finish up the software code for magnetic card reader
+  * <ins>Overview</ins>: The last step of the card reader required data parsing. Because the card swipe was sending three different tracks of information, I had to identify which track was relevant and which data to parse. After the final parsing I was able to identify each iCard swipe to be of a CARDHOLDER/UNIVERSITY card as well as reading in the UIN (unifersity identification number).
 
 * **04/17 (Software Code Integration)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Integrate all software codes
+  * <ins>Overview</ins>: After individual testing of each module, I had to put these back into the original FSM code that I had written to get the entire functionality of the machine working. Since we were using on-chip memory to store user information such as the number of available tokens, I created a student struct for each user as below. Each student is identified by his or her UIN along with the name, and the data stores the number of tokens as well. The final integration and output of our machine is posted on YouTube, and the link is shown under 04/24 (Final Wrap Up and Enclosure) in section [Week of 2022-04-18](#week-of-2022-04-18).
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/student_struct.png" width="250" height="150"> 
 
 ## Week of 2022-04-18
 * **04/19 (LCD Display and LED)**:
@@ -224,6 +228,7 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **04/24 (Final Wrap Up and Enclosure)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+  * YouTube link: 
 
 <p align = "center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971312833566486598/retrieve.gif">
