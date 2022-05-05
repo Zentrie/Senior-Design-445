@@ -60,7 +60,13 @@ This is a notebook outlining the work and progress I made from the start of the 
   * <ins>Objectives</ins>: Discuss the components of the PCB and general pin layout
   * <ins>Overview</ins>: The PCB required getting the footprints of each module our team was planning on using. This meant that we had to decide on the specific modules we were planning on using to get an idea of what kind of pin layouts the schematic would use. There was still some confusion between the exact components we needed, and thus I had worked on finalizing on what materials we needed. All the power and ground wires (VCC and GND) were ignored in the above consideration and only the digital and analog pins are discussed below. Regardless of the model number, the push buttons as well as the motors were going to have 1 data pin. The QR scanner was going to utilize a UART serial communication using the RX (receive) and TX (transmit) pins. The load cell had its own pin layout from the datasheet, but required an amplifier that essentially used serial clock and one data pin. The card reader was going to be connected to the microcontroller through a USB cable, and the power supply was going to utilize a voltage regulator to convert from 12V to 5V. Lastly the LEDs needed 6 to 7 pins, so using a mux was able to cut down the pin numbers to have 3. The below image shows the final schematic layout with the footprints.
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/pcb_schematic.png" width="400" height="600"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/pcb_layout.png" width="400" height="400">
+<p align="center">
+<img src="/images/pcb_schematic.png" width="250" height="400"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/pcb_layout.png" width="300" height="300">
+</p>
+
+<p align="center">
+ <strong>PCB Layout (Left), PCB Schematic (Right)</strong>
+</p>
 
 ## Week of 2022-02-14
 * **02/16 (Design Document)**:
@@ -109,21 +115,35 @@ This is a notebook outlining the work and progress I made from the start of the 
   * <ins>Objectives</ins>: Give all components needed to machine shop for completion of the physical design
   * <ins>Overview</ins>: Despite the design schematic with all specs labeled out, the machine shop required all components in hand to completely finish off the physical design. Thus the continuous motor that I had found defective had arrived this week, and needed to hand that off along with the LEDs to get our actual design finished. The below images show what our machine looked like right after the machine shop had finished making it.
 
+<p align="center">
+ <img src="/images/front_view.png" width="300" height="300">
+ <img src="/images/topdown_view.png" width="300" height="300">
+ <img src="/images/back_view.png" width="300" height="300">
+</p>
+
+<p align="center">
+ <strong>Front View (Left), Top-down View (Center), Back View (Right)</strong>
+</p>
+
 ## Week of 2022-03-21
 * **03/21 (Software FSM Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Finish the pseudocode for FSM
+  * <ins>Overview</ins>: The individual modules still required their own code to actually work, but I made a separate helper functions corresponding to different sensor modules. Thus whenenver the FSM required a certain execution of a module, I would call the appropriate function (e.g. QRread()) that were at this point in time void functions without any lines of code. The FSM code was written first to get an idea of the logic flow and which tasks had higher priority compared to others.
+
 * **03/26 (PCB Testing & Revision)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Testing and revising the PCB order
+  * <ins>Overview</ins>: I tried helping out with some of the PCB testings while mainly working on the software side. I realized that despite the individual software testing that I have been doing using Arudino uno and a USB host shield, the PCB had to achieve its full functionality as soon as possible to be incorporated into our project. I mainly helped out with soldering the parts and also probing each component to see if there were any faulty chips or wrong connections made within the board itself.
 
 ## Week of 2022-03-28
 * **03/28 (Individual Progress Report):**
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Work on individual progress report for submission
+  * <ins>Overview</ins>: I put a short pause on the software and pcb work to work on writing up my individual progress report. This report includes all the personal work I had done so far along with some of the software code I had written.
+
 * **03/29 (Software Servo Motor Code)**:
   * <ins>Objectives</ins>: Finish the code for both continuous and non-continuous servo motors
-  * <ins>Overview</ins>:
+  * <ins>Overview</ins>: Now that I had the initial code written for both the FSM and the motors, I worked on finishing up the codes for the motors to actually work with the intended design of our machine. The requirement was that the non-continuous motor that was responsible for the retrieval system required angular position data as well as the speed at which it rotates. Initially I had tried getting the motor to rotate slighly below 90 degrees with fast speed to "throw out" the returned containers but turned out to be a bit unsuccessful as it was getting too unsafe. The final testing gave a good result for rotating to 110 degrees witha delay of 10ms for each positional write. </br> </br> The continuous motor, on the other hand, had to go through some tuning process. Although sending a pulse of 1.5ms should technically stop the motor, it wasn't doing so and thus I used an adjustment screw and a potentiometer with PWM (pulse width modulation) to find the exact pulse for stopping. I also had to adjust the duration in which the continuous motor ran as it didn't have any closed loop feedback system. The below image shows the piece of code for the aobve behaviors. 
+  
+
 * **04/02 (Software Push Button Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
