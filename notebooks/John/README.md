@@ -214,21 +214,23 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 ## Week of 2022-04-18
 * **04/19 (LCD Display and LED)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Design decision between LCD and LEDs and finish software code for status messages
+  * <ins>Overview</ins>: Initially I thought of having a LCD display screen for UI subsystem, but realized that the machine was intended to behave in a similar manner to that of a normal vending machine, which meant that there was little to no information to convey to users. Most information was abstracted away for security reasons and thus the final design decision I made was using LED status messages. This was done using LEDs for 6 different states and using a multiplexer to cut down on the number of wires. The table below shows the 8-to-1 demux outputs based on the three select pins A0, A1, A2. </br> <img src="/images/demux.png" width="600" height="300">  </br> The LEDs were then controlled within the code using a helper function shown below.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/mux_code.png" width="350" height="150"> 
 
 * **04/22 (Mock Demo)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Mock demonstration with our TA
+  * <ins>Overview</ins>: We did our mock demosntration just in front of our TA and received feedback on certain parts. We were told to have an enclosure for our machine so that all components are well hidden from an outside user. The functionality was mostly achieved, but there were some minor things that I still had to work on.
 
 * **04/23 (Final Debugging and LED Status Message)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Finalize and complete on the functionality part of the project
+  * <ins>Overview</ins>: Most of the software and hardware components were complete at this point, and I had to ensure that everything was working as expected for the final demo. I ran through several different testcases for our machine and also wrote the status messages on top of the LEDs.
 
 * **04/24 (Final Wrap Up and Enclosure)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
-  * YouTube link: 
+  * <ins>Objectives</ins>: Finalize and complete the entire project
+  * <ins>Overview</ins>: Incorporating the feedback we received from the mock demo, we completed the enclosure for our machine so that all things were abstracted away. We also made certain openings for the enclosure so that any "authorized" individuals were allowed to collect returned containers and refill new containers. The below link shows the functionality of our entire project and the two gifs below demonstrate how the sensor and control subsystem work together to complete the retrieval and dispensing system.
+  * <ins>YouTube link</ins>: https://www.youtube.com/watch?v=p8fdRb78moU
 
 <p align = "center">
 <img src = "https://cdn.discordapp.com/attachments/903401697957789716/971312833566486598/retrieve.gif">
@@ -241,21 +243,24 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 ## Week of 2022-04-25
 * **04/26 (Final Demo)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Complete final demonstration
+  * <ins>Overview</ins>: We did our final demonstration in front of our TA, professor Song as well as some other individuals who wanted to attend our presentation.
 
 * **04/27 (Presentation Slides)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Work on presentation slides and final report
+  * <ins>Overview</ins>: After the final demo was over, there were only two major components left, which were the final presentation and the final report. I took this week to complete some of the design and software components for both the presentation and the report. I also arranged our team meetings to get together and reheaser.
 
 ## Week of 2022-05-02
 * **05/03 (Final Presentation)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Deliver our final presentation
+  * <ins>Overview</ins>: Similar to the final demo, we had our final presentation in front of our TA, professor Song, and some individuals who wanted to attend. This took about 20 minutes along with 5 extra minutes for additional Q&A.
 
 ## References
+* Adafruit, Continuous Rotation Servo - FeeTech FS5103R. [Online]. Available: https://media.digikey.com/pdf/data%20sheets/adafruit%20pdfs/154_web.pdf. [Accessed: 02-May-2022].
 * “QR code vs Barcode: Why the difference matters,” Paysley Blog, 10-Feb-2022. [Online]. Available: https://paysley.com/blog/qr-code-vs-barcode/. [Accessed: 03-May-2022].
+* “Resistors for led circuits: Resistor applications: Resistor Guide,” EEPower. [Online]. Available: https://eepower.com/resistor-guide/resistor-applications/resistor-for-led/#. [Accessed: 03-May-2022].
 * “RFID scanner - full tutorial,” Arduino Project Hub. [Online]. Available: https://create.arduino.cc/projecthub/shubamtayal/rfid-scanner-full-tutorial-6518db. [Accessed: 03-May-2022].
+* “Stepper vs Servo,” Tutorial: Stepper vs Servo. [Online]. Available: https://www.amci.com/industrial-automation-resources/plc-automation-tutorials/stepper-vs-servo/. [Accessed: 03-May-2022].
 * “Tal221 miniature load cell - cdn.sparkfun.com.” [Online]. Available: https://cdn.sparkfun.com/assets/9/9/a/f/3/TAL221.pdf. [Accessed: 02-May-2022].
 * University Housing, “Good2Go carry-out program,” University Housing. [Online]. Available: https://housing.illinois.edu/Dining/Locations/Good2Go-Carry-Out-Program. [Accessed: 30-Apr-2022].
 
