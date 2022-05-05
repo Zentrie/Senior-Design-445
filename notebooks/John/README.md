@@ -142,14 +142,18 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **03/29 (Software Servo Motor Code)**:
   * <ins>Objectives</ins>: Finish the code for both continuous and non-continuous servo motors
   * <ins>Overview</ins>: Now that I had the initial code written for both the FSM and the motors, I worked on finishing up the codes for the motors to actually work with the intended design of our machine. The requirement was that the non-continuous motor that was responsible for the retrieval system required angular position data as well as the speed at which it rotates. Initially I had tried getting the motor to rotate slighly below 90 degrees with fast speed to "throw out" the returned containers but turned out to be a bit unsuccessful as it was getting too unsafe. The final testing gave a good result for rotating to 110 degrees witha delay of 10ms for each positional write. </br> </br> The continuous motor, on the other hand, had to go through some tuning process. Although sending a pulse of 1.5ms should technically stop the motor, it wasn't doing so and thus I used an adjustment screw and a potentiometer with PWM (pulse width modulation) to find the exact pulse for stopping. I also had to adjust the duration in which the continuous motor ran as it didn't have any closed loop feedback system. The below image shows the piece of code for the aobve behaviors. 
-  
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/motor_code.png" width="300" height="300">
 
 * **04/02 (Software Push Button Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Software code for the two push buttons
+  * <ins>Overview</ins>: The two push buttons that we were using for the project was slightly different than the normal push buttons with 4 legs. The push buttons that we had only had two legs and were operating in maintain-contact mode. This meant that the push button maintained whatever status it was before until another press is made. For example, the data pin for the push button will continuously read OFF (0) until a press is made at which the pin will not continuously read ON (1). The code was written such that it registers the inital button press and only measures the change in the states when needed. This method allowed other processes with higher priority such as the USB task and the UART communication to run without any delay.
+
 * **04/03 (Hardware Push Button)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Push Button Issue and Hardware
+  * <ins>Overview</ins>: One problem with the push buttons was that the two legs had different types of wires, and needed extra soldering to fit into our PCB. I had notified my teammates about this and was able to get a small board layout to add different wires for the push buttons. The testing of the push buttons were done through a serial monitor to constantly check for the press state. However one major issue that I faced was that the buttons were left in a floating state and thus had to add a pull up resistor to define the logic states of the two buttons. The right image below shows the faulty behavior I got, and the left image shows the correct havior of switching states upon a press.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/button_error.png" width="500" height="300">
 
 ## Week of 2022-04-04
 * **04/04 (Software Motor Debugging)**:
