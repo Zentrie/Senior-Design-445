@@ -40,6 +40,8 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **02/07 (Complete and Submit Proposal)**:
   * <ins>Objectives</ins>: Complete the proposal for submission
   * <ins>Overview</ins>: Even after getting the RFA approved, the proposal required extra work from each member. I was responsible for the design as well as the tolerance analysis. Our project required a mechanism to dispense exactly one container upon a single request, and the design that I came up with was to have two mechanical arms retracting in a order shown in the image below to dispense a single container while reloading the other containers.
+    
+    <img src="images/project.png" width="400" height="300">
 
     The design for the retrieval system required the machine to parallelize the sensor validtion process with the control subsystem. This was to allow the machine to retrieve a returned container the moment it finished validating the container, and thus I made a design to have two mechanical arms attached beneath the scale to lift up upon a command from the microcontroller. The image below shows physical design of the retrieval system.
 
