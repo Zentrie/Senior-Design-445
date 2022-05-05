@@ -54,13 +54,13 @@ This is a notebook outlining the work and progress I made from the start of the 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; we were planning on using. The motor used for the retrieval system needed a closed loop feedback system to be able to rotate properly  
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; and the speed of the motor was controlled by sending different pulse data. 
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="../../images/motor_equation.png" width="600" height="150">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/motor_equation.png" width="600" height="150">
 
 * **02/11 (PCB Discussion)**:
   * <ins>Objectives</ins>: Discuss the components of the PCB and general pin layout
   * <ins>Overview</ins>: The PCB required getting the footprints of each module our team was planning on using. This meant that we had to decide on the specific modules we were planning on using to get an idea of what kind of pin layouts the schematic would use. There was still some confusion between the exact components we needed, and thus I had worked on finalizing on what materials we needed. All the power and ground wires (VCC and GND) were ignored in the above consideration and only the digital and analog pins are discussed below. Regardless of the model number, the push buttons as well as the motors were going to have 1 data pin. The QR scanner was going to utilize a UART serial communication using the RX (receive) and TX (transmit) pins. The load cell had its own pin layout from the datasheet, but required an amplifier that essentially used serial clock and one data pin. The card reader was going to be connected to the microcontroller through a USB cable, and the power supply was going to utilize a voltage regulator to convert from 12V to 5V. Lastly the LEDs needed 6 to 7 pins, so using a mux was able to cut down the pin numbers to have 3. The below image shows the final schematic layout with the footprints.
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="../../images/pcb_schematic.png" width="400" height="600"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="../../images/pcb_layout.png" width="400" height="400">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/pcb_schematic.png" width="400" height="600"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/pcb_layout.png" width="400" height="400">
 
 ## Week of 2022-02-14
 * **02/16 (Design Document)**:
@@ -74,7 +74,9 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 * **02/23 (Changes to Design Document)**:
   * <ins>Objectives</ins>: Final submission of design document
-  * <ins>Overview</ins>: Made the final changes outlined during the design document check and went over all the small writing details such as the TOC (table of contents) and paging rules.
+  * <ins>Overview</ins>: Made the final changes outlined during the design document check and went over all the small writing details such as the TOC (table of contents) and paging rules. The block diagram also needed changes as we had to specify whether the type of data line was digital or analog. The power supply lines also need specifications as to what voltage it required (e.g. 12V or 5V or 3.3V). The below block diagram reflects the final changes made.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/block_diagram.png" width="500" height="300">
 
 * **02/27 (PCB Parts)**:
   * <ins>Objectives</ins>: Finalize on PCB parts
@@ -87,19 +89,25 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 ## Week of 2022-03-07
 * **03/07 (Finish Pseudocode)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Finish Pseudocode for the entire project with all sensors
+  * <ins>Overview</ins>: Even after getting the individual components working, integrating would add a lot of changes to the written code and so I decided to first work on the general state machine of the project. This way, all the code that I would write for each control and sensor module would take into account the type of input and output they need to be receiving and sending. The below image that I made shows the different state transitions. The initial state corresponds to the idle state of the machine waiting for a card swipe. Only then would the machine activate and start executing other exchange processes.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/FSM.png" width="500" height="300">
+
 * **03/10 (Machine Shop Design)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Provide design schematic for the machine shop
+  * <ins>Overview</ins>: Since our project was creating a physical product without any basis to automate a currently existing service, there were complex design schematics we had to create to hand off to the machine shop. Only then would they be able to actually build what we had intended. I started looking into the specs of the different modules we bought as these were critical in determing the exact orientations and placements of the sensors. For example, the QR scanner required a specific tilt tolerance and limited FOV (field of view). Also since our machine had to be downscaled compared to what we had originally planned, we had to effectively make use of the space. The below diagram shows the design specifications my team and I made for the machine shop.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/design_spec.png" width="300" height="400">
 
 ## Week of 2022-03-14
 * **03/15 (Finalizing on Parts)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Finish ordering all parts required for the project
+  * <ins>Overview</ins>: After buying all the big components of the project including the QR scanner, card reader, load cell, and motors, there were still a few other elements we needed. We had to buy different types of LEDs for the status messages as well as an amplifier as the load cell may give out weak signals that are hard to perform a digital read on.
+
 * **03/17 (Machine Shop Order Check)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Give all components needed to machine shop for completion of the physical design
+  * <ins>Overview</ins>: Despite the design schematic with all specs labeled out, the machine shop required all components in hand to completely finish off the physical design. Thus the continuous motor that I had found defective had arrived this week, and needed to hand that off along with the LEDs to get our actual design finished. The below images show what our machine looked like right after the machine shop had finished making it.
 
 ## Week of 2022-03-21
 * **03/21 (Software FSM Code)**:
@@ -173,6 +181,15 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **04/24 (Final Wrap Up and Enclosure)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
+<p align = "center">
+<img src = "https://cdn.discordapp.com/attachments/903401697957789716/971312833566486598/retrieve.gif">
+<img src = "https://cdn.discordapp.com/attachments/903401697957789716/971312807532458034/dispense.gif">
+</p>
+
+<p align = "center">
+ <strong>Retrieval (Left) and Dispensing (Right)</strong>
+</p>
 
 ## Week of 2022-04-25
 * **04/26 (Final Demo)**:
