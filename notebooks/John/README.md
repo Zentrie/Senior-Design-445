@@ -157,37 +157,53 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 ## Week of 2022-04-04
 * **04/04 (Software Motor Debugging)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Non-continuous servo motor debugging
+  * <ins>Overview</ins>: When running my software code on our actual machine, I started noticing a weird behavior of one of the motors that we were using when powered up. The normal executions of the motors were fine, but only in the beginning, the motor would shoot up to a 90 degree position when we required it to stay at 0 degrees until it received commands from the microcontroller. After doing some searching, I found out that the motors drew a lot of power and thus required a separate power supply. The solution that I came up with was to have another battery pack of 5V and also add a capacitor in the circuit. Lastly, I sent some initial data commands to the motors on start up to ensure no erratic behaviors were made.
+
 * **04/07 (Software Load Cell Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Software code for load cell
+  * <ins>Overview</ins>: I started working on the software code for the load cell, and realized I had to go through some calibration process. Most scales already come with the calibration done, but the load cell itself had to be manually calibrated for accurate weight measurements. Since our machine had to weigh very light food containers, the below code was written with the use of an amplifier to adjust the calibration factor. The process included placing a known weight onto the load cell and constantly adjusting the calibration factor until the measurement was within a small margin of error.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/loadcell_init.png" width="500" height="300">
+
 * **04/08 (Software Load Cell Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Software code for load cell continued
+  * <ins>Overview</ins>: After the initial calibration was completed, I started working on actual weight measurements within the software. Since the load cell was calibrated for reading small weights, even small small pressure onto it by human contact made extreme fluctations for the readings. Thus I had introduced some delay in the loadcell measurement to start reading weight data until the returned container was fully placed and succeeded in the QR scanning. I then averaged out the weight readings to get an accurate measurement.
+
 * **04/09 (Software Load Cell Complete and Starting QR Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Load cell wrap up and starting on software code for QR
+  * <ins>Overview</ins>: The last part of the loadcell code required coming up with weight thresholds for the validation process. We required that the returned container shouldn't contain too much food waste. Thus if the container weighed more than 7g compared to its base weight, we would have to reject the container. I set a weight threshold of 10g as the base weight of the container turned out to be approximately 3g. The exact resolution of the loadcell directly links to the sensitivity and accuracy. Thus using the graph below, I was able to calculate the minimum weight measurable by dividng the maximum load by the number of divisions to get about 0.03g. </br> &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/load_cell_resolution.png" width="500" height="300">  </br> The QR scanner module supported UART serial communcation. Thus I had to make a connection between the RX (receive) and TX (transmit) pins between the host (microcontroller) and the device (QR scanner). After some trial and error, I was actually able to get some raw readings of the QR scans.
+
 
 ## Week of 2022-04-11
 * **04/11 (Software QR Complete)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Complete software code and testing for QR scanner
+  * <ins>Overview</ins>: Even though I was able to get the QR code readings using the module, there were several issues that I had to fix. One was that the reading values kept changing even for the same QR code. I realized that there were two different types of QR codes, dynamic and statc. Dynamic QR codes had their encoded information change upon creation as it was a redirection to a URL whereas static QR codes had their information fixed. Since our project only required QR codes for validation of the G2G containers, I used static QR codes to read the data. Another issue was that if the returned container sat in the return place for too long, it would get multiple QR scans and fill up the serial communication buffer. Thus next time the machine was used, it gets tricked into thinking that it already has a valid QR scan. To solve this issue, I had to clear the buffer if and only if the container was invalid.
+
 * **04/12 (Software Card Reader Code)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Software code for usb magnetic card swiper
+  * <ins>Overview</ins>: I started working on the card swiper but spent numerous hours just debugging to get it to work. This was because the card reader was a HID device and had complex USB protocols that I had to go through. The initial model we were using was a MSR123 card reader. As it failed to initialize, I started looking into the product ID as well as the vendor ID and saw a mismatch between what my computer had detected and what my software code had detected. It was failing to retrieve the device descriptor for the specific USB device. I tried making tweaks in the code to store larger bits for the ID as there was a huge mismatch, but no sort of available driver code was able to get the card initialized.
+
 * **04/13 (Card Reader Code Failure & Debugging)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Final debugging of the card reader
+  * <ins>Overview</ins>: After multiple attempts, I went line by line within the Arduino library to find the point of failure, and identified it to be in the below code. When I declared a USB object within the software, it went through a list of initialization processes to find the device descriptor and storing the end-point address of the device. However it was unable to do so, and I realized that I either had to write a separate driver code (which was impossible with the time constraint I had) or find another HID device compatible with existent driver codes.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/load_cell_resolution.png" width="500" height="300"> 
+
 * **04/14 (Card Reader Alternative Solution)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Design consideration for the card reader
+  * <ins>Overview</ins>: After multiple failures with the card reader, I started thinking about different alternatives. Many teams have been using a RFID tags for ID verification and I also thought about moving to this method. However not only did this incur additional cost as well as delaying the progress with delivery time, it didn't accomodate the intended design of our machine as we wanted it to be available exlcusively to the U of I students using their iCards. Using RFID cards meant that the project was just a proof of concept that has very little practical use as it meant all students would have to purchase a RFID tag. Thus I decided to stick with a card swiper but looked for different models.
+
 * **04/15 (Card Reader MSR90)**:
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+  * <ins>Objectives</ins>: Card reader code using MSR90
+  * <ins>Overview</ins>: The unsuccessful attempts with MSR123 led me to try with another model called MSR90. Forunately after some tweaking, I was able to get the card reader to initialize. One major modification I had to do was so that it would read all different kinds of magnetic stripe cards, but only parse the data for iCards (and not credit cards, etc). This was done by modifying the interrupt response of the device. Card readers act similar to USB HID Keyboard device descriptor as it responds to both key up and key down interrupts. The image below shows the different interrupts that a card swipe and keyboard responds to. The card reader also responded to presses of special key characters like SHIFT and CAPS, which wasn't what I wanted for the project. Magnetic cards usually have three tracks and each track is separated by some special character, which was why the interrupt was happening for RIGHT SHIFT and so on. After getting rid of some of the interrupts, I was able to read in actual data from each card swipe.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="/images/HIDkb.png" width="600" height="300"> 
+
 * **04/16 (Software Card Reader Complete)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
 * **04/17 (Software Code Integration)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
@@ -196,12 +212,15 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **04/19 (LCD Display and LED)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
 * **04/22 (Mock Demo)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
 * **04/23 (Final Debugging and LED Status Message)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
 * **04/24 (Final Wrap Up and Enclosure)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
@@ -219,6 +238,7 @@ This is a notebook outlining the work and progress I made from the start of the 
 * **04/26 (Final Demo)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
 * **04/27 (Presentation Slides)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
