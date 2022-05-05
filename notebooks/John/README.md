@@ -32,11 +32,20 @@ This is a notebook outlining the work and progress I made from the start of the 
 ## Week of 2022-02-01
 * **02/01 (RFA Submission and Starting on Proposal)**:
   * <ins>Objectives</ins>: Get the RFA approved and start working on the proposal
-  * <ins>Overview</ins>: The initial RFA post got rejected mainly because our team was not specific about the subsystem requirements. My team and I had a discussion with a TA named Dean Biskup to identify what we were missing in the RFA. I had a general idea of what kind of modules we were going to need for the project such as a motor, ID verification method, UI interface, and power supply components, the specifics were missing out as to how to integrate the entire components. I started looking into the details of each subsystem and was able to design an abstract FSM (finite state machine) with specific modules such as the QR scanner, scale, two sets of motors, display and a card reader. 
+  * <ins>Overview</ins>: The initial RFA post got rejected mainly because our team was not specific about the subsystem requirements. My team and I had a discussion with a TA named Dean Biskup to identify what we were missing in the RFA. I had a general idea of what kind of modules we were going to need for the project such as a motor, ID verification method, UI interface, and power supply components, the specifics were missing out as to how to integrate the entire components. I started looking into the details of each subsystem and was able to design an abstract FSM (finite state machine) with specific modules such as the QR scanner, scale, two sets of motors, display and a card reader. Additionally, I started outlining the criterion of success for our project, which required:
+    1. Storing the tokens digitally for each user
+    2. Allowing exchange between not only tokens for new containers but also old containers for new containers  
 
 ## Week of 2022-02-07
-* 02/07: proposal complete
-* 02/11: discuss pcb
+* **02/07 (Complete and Submit Proposal)**:
+  * <ins>Objectives</ins>: Complete the proposal for submission
+  * <ins>Overview</ins>: Even after getting the RFA approved, the proposal required extra work from each member. I was responsible for the design as well as the tolerance analysis. Our project required a mechanism to dispense exactly one container upon a single request, and the design that I came up with was to have two mechanical arms retracting in a order shown in the image below to dispense a single container while reloading the other containers.
+
+    The design for the retrieval system required the machine to parallelize the sensor validtion process with the control subsystem. This was to allow the machine to retrieve a returned container the moment it finished validating the container, and thus I made a design to have two mechanical arms attached beneath the scale to lift up upon a command from the microcontroller. The image below shows physical design of the retrieval system.
+
+* **02/11 (PCB Discussion)**:
+  * <ins>Objectives</ins>:
+  * <ins>Overview</ins>:
 
 ## Week of 2022-02-14
 * 02/16: design doc
