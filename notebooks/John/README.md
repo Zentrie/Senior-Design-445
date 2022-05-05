@@ -17,11 +17,11 @@
 * [Week of 2022-04-18](#week-of-2022-04-18)  
 * [Week of 2022-04-25](#week-of-2022-04-25)  
 * [Week of 2022-05-02](#week-of-2022-05-02)  
-
+* [References](#references)
 
 
 ## Summary
-This is a notebook outlining the work and progress I made from the start of the project.
+This is a notebook outlining the work and progress I made from the start of the project. All the references used are attached under the [References](#references) section at the very bottom.
 
 ## Week of 2022-01-24
 * **01/25 (Getting Started on the RFA)**:
@@ -58,127 +58,140 @@ This is a notebook outlining the work and progress I made from the start of the 
 
 * **02/11 (PCB Discussion)**:
   * <ins>Objectives</ins>: Discuss the components of the PCB and general pin layout
-  * <ins>Overview</ins>:
+  * <ins>Overview</ins>: The PCB required getting the footprints of each module our team was planning on using. This meant that we had to decide on the specific modules we were planning on using to get an idea of what kind of pin layouts the schematic would use. There was still some confusion between the exact components we needed, and thus I had worked on finalizing on what materials we needed. All the power and ground wires (VCC and GND) were ignored in the above consideration and only the digital and analog pins are discussed below. Regardless of the model number, the push buttons as well as the motors were going to have 1 data pin. The QR scanner was going to utilize a UART serial communication using the RX (receive) and TX (transmit) pins. The load cell had its own pin layout from the datasheet, but required an amplifier that essentially used serial clock and one data pin. The card reader was going to be connected to the microcontroller through a USB cable, and the power supply was going to utilize a voltage regulator to convert from 12V to 5V. Lastly the LEDs needed 6 to 7 pins, so using a mux was able to cut down the pin numbers to have 3. The below image shows the final schematic layout with the footprints.
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="../../images/pcb_schematic.png" width="400" height="600"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="../../images/pcb_layout.png" width="400" height="400">
 
 ## Week of 2022-02-14
-* 02/16 (Design Document):
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+* **02/16 (Design Document)**:
+  * <ins>Objectives</ins>: Finish writing design document for initial submission
+  * <ins>Overview</ins>: This week, I mainly focused on writing several parts of the design document. Not only did I add more details for each subsystem and incorporate the design changes we made as a team, but also worked on the Requirements and Verification table. A lot of the requirements for the project required correct mechanical execution that heavily depended on the software code. Thus, some of the verification methods included utilizng the serial monitor for debugging purposes.
 
 ## Week of 2022-02-21
-* 02/21: design doc check
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
-* 02/23: changes to dd
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
-* 02/27: pcb parts
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+* **02/21 (Design Document Check)**:
+  * <ins>Objectives</ins>: Check the initial design document submission with our TA
+  * <ins>Overview</ins>: After the initial submission of our design document, we received feedback on both the writing requirements as well as the technical aspects. There were a few grammatical errors, but it was mostly about the entire structure of the paper. I revised the format of the document to follow the example paper given on the course website. Additionally, the tolerance analysis needed a bit more work as now I realized that the angular position required to go beyond 90 degrees regardless of the RPM to correctly retrieve the returned container.
+
+* **02/23 (Changes to Design Document)**:
+  * <ins>Objectives</ins>: Final submission of design document
+  * <ins>Overview</ins>: Made the final changes outlined during the design document check and went over all the small writing details such as the TOC (table of contents) and paging rules.
+
+* **02/27 (PCB Parts)**:
+  * <ins>Objectives</ins>: Finalize on PCB parts
+  * <ins>Overview</ins>: After acquiring the footprints of each module for the PCB schematic, we had to order the right parts to actually connect to the PCB components. I went through a lot of design considerations such as between servo and stepper motors. In the end, I decided on certain parts like the continuous and non-continuous servo motors as well as acquiring a specific barcode/QR scanner from WaveShare.
 
 ## Week of 2022-02-28
-* 03/04: start on motor code
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
+* **03/04 (Software Motor Code)**:
+  * <ins>Objectives</ins>: Start on writing the software code for motors
+  * <ins>Overview</ins>: Because we were dealing with two different types of servo motors (continuous and non-continuous), they were operating in different modes and thus needed different code to run the two. As most of the parts were currently not available for actual testing because they were either still being shipped or being used by the machine shop for the physical design, I had written code for simply testing whether the motors were working or not. The two peices of code that I ran were based on position data and pulse data. This is when I realized we had a malfunctioning continuous motor as it wasn't even getting powered on. I notified my team members and ordered a new component.
 
 ## Week of 2022-03-07
-* 03/07: finish pseudocode
+* **03/07 (Finish Pseudocode)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 03/10: machine shop design
+* **03/10 (Machine Shop Design)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-03-14
-* 03/15: parts finalized
+* **03/15 (Finalizing on Parts)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 03/17: machine shop order placed
+* **03/17 (Machine Shop Order Check)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-03-21
-* 03/21: start on fsm software
+* **03/21 (Software FSM Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 03/26: pcb testing & revision
+* **03/26 (PCB Testing & Revision)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-03-28
-* 03/28: individual progress report
+* **03/28 (Individual Progress Report):**
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 03/29: servo motor code
+* **03/29 (Software Servo Motor Code)**:
+  * <ins>Objectives</ins>: Finish the code for both continuous and non-continuous servo motors
+  * <ins>Overview</ins>:
+* **04/02 (Software Push Button Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/02: software start button
-  * <ins>Objectives</ins>:
-  * <ins>Overview</ins>:
-* 04/03: hardware for button and finish
+* **04/03 (Hardware Push Button)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-04-04
-* 04/04: Software non-contin servo complete
+* **04/04 (Software Motor Debugging)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/07: Software load cell
+* **04/07 (Software Load Cell Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/08: load cell
+* **04/08 (Software Load Cell Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/09: load cell finish and QR start
+* **04/09 (Software Load Cell Complete and Starting QR Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-04-11
-* 04/11: finish QR
+* **04/11 (Software QR Complete)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/12: card reader code start
+* **04/12 (Software Card Reader Code)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/13: fail and debug
+* **04/13 (Card Reader Code Failure & Debugging)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/14: different method
+* **04/14 (Card Reader Alternative Solution)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/15: msr90
+* **04/15 (Card Reader MSR90)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/16: finish card reader
+* **04/16 (Software Card Reader Complete)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/17: integrate
+* **04/17 (Software Code Integration)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-04-18
-* 04/19: try lcd but use led
+* **04/19 (LCD Display and LED)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/22: mock demo
+* **04/22 (Mock Demo)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/23: debugging and led lights
+* **04/23 (Final Debugging and LED Status Message)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/24: enclosure
+* **04/24 (Final Wrap Up and Enclosure)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-04-25
-* 04/26: final demo
+* **04/26 (Final Demo)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
-* 04/27: start ppt
+* **04/27 (Presentation Slides)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
 
 ## Week of 2022-05-02
-* 05/03: final ppt presentation
+* **05/03 (Final Presentation)**:
   * <ins>Objectives</ins>:
   * <ins>Overview</ins>:
+
+## References
+* “QR code vs Barcode: Why the difference matters,” Paysley Blog, 10-Feb-2022. [Online]. Available: https://paysley.com/blog/qr-code-vs-barcode/. [Accessed: 03-May-2022].
+* “RFID scanner - full tutorial,” Arduino Project Hub. [Online]. Available: https://create.arduino.cc/projecthub/shubamtayal/rfid-scanner-full-tutorial-6518db. [Accessed: 03-May-2022].
+* “Tal221 miniature load cell - cdn.sparkfun.com.” [Online]. Available: https://cdn.sparkfun.com/assets/9/9/a/f/3/TAL221.pdf. [Accessed: 02-May-2022].
+* University Housing, “Good2Go carry-out program,” University Housing. [Online]. Available: https://housing.illinois.edu/Dining/Locations/Good2Go-Carry-Out-Program. [Accessed: 30-Apr-2022].
+
+
+
