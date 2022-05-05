@@ -107,14 +107,13 @@
   - Cause of corrosion was due to using water-soluble flux when desoldering from our original PCB
 # 2022-04-22 -- Mock Demo
 - Conducted our Mock Demo with our TA (Akshat). Tidied up final apparatus and got ready for final demo. 
+
 # 2022-04-26 -- Final Demo 
-- Conducted our Final Demo with our TA (Akshat) and Professor Song. 
-- Started powerpoint presentation.
-  
-# 2022-05-03 -- Presentation 
-- Present to our TA (Akshat) and Professor Song. 
+- Present project in front of our TA (Akshat) and Professor Song. 
+- Preparation for final presentation.
 
-
+# 2022-05-03 -- Presentation
+- Present in front of our TA (Akshat) and Professor Song.
 
 
 
